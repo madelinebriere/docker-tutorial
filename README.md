@@ -48,6 +48,7 @@ If you visit the page localhost:80, you should now see the static webpage!
 Try following the instructions listed on the static webpage. Once you have made these changes in the `static-webapp` folder, run `docker ps -a` and find the docker container with the status 'Up.'  Run the following commands to get a fresh start:
 
 `docker stop <container_id>`
+
 `docker rm <container_id>`
 
 There are more efficient ways to do this, but we will stick with this for ease of understanding. Now you can rebuild and launch an entirely fresh container with your new changes.
@@ -56,6 +57,7 @@ There are more efficient ways to do this, but we will stick with this for ease o
 To see the difference between your local computer and the container, run the following commands:
 
 `docker run webserver-image:v1 nginx -v`
+
 `nginx -v`
 
 Unless you already had nginx installed on your computer, you should observe that the first command prints out a nginx version while the latter does not. This is because all of the configuration was accomplished on the docker container, rather than your local computer. When you kill this container, the configuration will go with it. With more advanced webpages, we may need a variety of resources to be installed on the container. Docker handles all of this configuration without modifying your local computer settings.
@@ -78,4 +80,4 @@ Unless you already had nginx installed on your computer, you should observe that
 
 * https://docker-curriculum.com/
 * https://www.katacoda.com/courses/docker/create-nginx-static-web-server
-* prakhar1989_docker-curriculum_ A comprehensive tutorial on getting started with Docker!*
+* https://github.com/prakhar1989/docker-curriculum/blob/master/static-site/html/index.html
