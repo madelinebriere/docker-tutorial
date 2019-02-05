@@ -1,14 +1,14 @@
 # Docker Tutorial
-### CS308
+## CS308
 
-### An Introduction to Docker
+## An Introduction to Docker
 Docker is:
 > an open-source project that automates the deployment of software 
 > applications inside containers by providing an additional layer 
 > of abstraction and automation of OS-level virtualization on Linux.
 This is a fancy way of saying that Docker provides a sandbox type of environment for deployment of applications, in the form of a Docker _container_. A container can be standardized and shipped out to many different machines are once, requiring little or no set-up to organize once the Docker framework is laid out.
 
-### Getting Started with Docker
+## Getting Started with Docker
 Let's first install Docker. Download an installer for [Mac](https://www.docker.com/products/docker-engine#/mac), [Linux](https://www.docker.com/products/docker-engine#/linux), or [Windows](https://www.docker.com/products/docker-engine#/windows). Once the installation is complete, make sure that Docker is installed on your command line by running the following command:
 
 `docker run hello-world`
@@ -16,7 +16,7 @@ Let's first install Docker. Download an installer for [Mac](https://www.docker.c
 
 Congrats! You officially have Docker installed.
 
-### Busybox
+## Busybox
 We will now learn more about Docker by running a [Busybox](https://en.wikipedia.org/wiki/BusyBox) container. Busybox provides several Unix utilities in a single source, giving us plenty of built-in functionality with which to work. To get started, fetch the busybox image from the Docker registry:
 
 `docker pull busybox`
@@ -44,7 +44,7 @@ This command builds and configures a docker container. We can now launch this co
 
 If you visit the page localhost:80, you should now see the static webpage! 
 
-#### Making Changes
+### Making Changes
 Try following the instructions listed on the static webpage. Once you have made these changes in the `static-webapp` folder, run `docker ps -a` and find the docker container with the status 'Up.'  Run the following commands to get a fresh start:
 
 `docker stop <container_id>`
@@ -62,14 +62,14 @@ To see the difference between your local computer and the container, run the fol
 
 Unless you already had nginx installed on your computer, you should observe that the first command prints out a nginx version while the latter does not. This is because all of the configuration was accomplished on the docker container, rather than your local computer. When you kill this container, the configuration will go with it. With more advanced webpages, we may need a variety of resources to be installed on the container. Docker handles all of this configuration without modifying your local computer settings.
 
-### Useful Docker commands:
+## Useful Docker commands:
 
 * `docker ps`: List all running containers.
 * `docker ps -a`: List all containers.
 * `docker rm <container ID>`: Delete docker container.
 * `docker rm $(docker ps -a -q -f status=exited)`: Delete all exited containers.
 
-### Terminology:
+## Terminology:
 * Images - The blueprints of our application which form the basis of containers. In the demo above, we used the `docker pull` command to download the busybox image.
 * Containers - Created from Docker images and run the actual application. We create a container using docker run which we did using the busybox image that we downloaded. A list of running containers can be seen using the `docker ps` command.
 * Docker Daemon - The background service running on the host that manages building, running and distributing Docker containers. The daemon is the process that runs in the operating system to which clients talk to.
