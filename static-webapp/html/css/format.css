@@ -1,0 +1,23 @@
+html {
+  margin: 25px;
+  background-color: rgb(240,240,240);
+  font-family: arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Applies to all <h1>...</h1> elements. */
+h1 {
+  font-size: 35px;
+  font-weight: normal;
+  font-color: rgb(60,60,240);
+  margin-top: 5px;
+}
+
+
+/* Applies to all <h1>...</h1> elements. */
+h1 {
+  font-size: 30px;
+  font-weight: normal;
+  margin-top: 5px;
+  font-color: rgb(60,240,60);
+}
