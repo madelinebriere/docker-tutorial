@@ -29,7 +29,7 @@ By passing a command, we instruct the container to  launch, execute our command,
 
 _So why run our command through a docker container? Isn't this just extra work?_ The answer to this question becomes more apparent as we advance to more complex applications. 
 
-### Docker and Webapps 
+## Docker and Webapps 
 We are now going to use Docker to deploy a static website. Navigate to the `static-webapp` directory and explore the files there. 
 
 The `html` folder holds all of the static content to be served on the website (including HTML and CSS). The `Dockerfile` is of particular importance -- this file defines the base image for our Docker container. Because we are running a very simple application, all Dockerfile is mainly composed of the Alpine version of Nginx, which lets us deploy static HTML.
