@@ -9,32 +9,97 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/format.css">
-
 </head>
 <body>
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-	<h1>Congrats! You just launched a custom webpage with Docker!</p>
-	<h2>Task 1: Modify this image</h1>
-	Change this image by uploading a new JPG to the html folder and referencing it here. <br>
-	<img src="images/docker.jpg">
+<h1>Congrats! You just launched a custom webpage with Docker!</h1>
+<div class="row">
+  	<div class="column">
+  		<h2>Task 1: Modify this image</h2>
+			Change the image below by uploading a new JPG to the html folder and referencing it here. 
+  	</div>
 
-	<h2>Task 2: Add an item to this list</h1>
-	Why I love Docker:
-	<ul>
-	   <li>It has a cute whale logo</li>
-	   <li>It saves configuration time</li>
-	   <li>It avoid system-based errors</li>
-	</ul>
+	<div class="column">
+		<h2>Task 2: Add an item to this list</h2>
+		Why I love Docker:
+		<ul>
+			<li>It has a cute whale logo</li>
+			<li>It saves configuration time</li>
+			<li>It avoid system-based errors</li>
+		</ul>
+	</div>
 
-	<h2>Task 3: Add a new section</h1>
-	Add something fun here!
 
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<div class="column">
+	<h2>Task 3: Add a new section</h2>
+		Add something fun here!
+	</div>
+</div>
+
+<div class="polaroid">
+  	<img src="images/docker.jpg" alt="Docker meme" style="width:100%">
+  	<div class="container">
+  	<p>Docker meme</p>
+  	</div>
+</div>
 </body>
 </html>
+
+
+<!-- Styling
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<style>
+	html {
+	  margin: 25px;
+	  background-color: rgb(200,200,240);
+	  font-family: arial, sans-serif;
+	  font-size: 18px;
+	}
+
+	/* Applies to all <h1>...</h1> elements. */
+	h1 {
+	  font-size: 35px;
+	  font-weight: normal;
+	  color: rgb(10,10,60);
+	  margin-top: 5px;
+	}
+
+
+	/* Applies to all <h2>...</h2> elements. */
+	h2 {
+	  font-size: 25px;
+	  font-weight: normal;
+	  margin-top: 5px;
+	  color: rgb(60,10,60);
+	}
+
+	div.polaroid {
+	  width: 80%;
+	  background-color: white;
+	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+
+	img {width: 100%}
+
+	div.container {
+	  text-align: center;
+	  padding: 10px 20px;
+	  border-radius: 8px;
+	}
+
+	.column {
+	  float: left;
+	  width: 33.33%;
+	}
+
+	/* Clear floats after the columns */
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+</style>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
