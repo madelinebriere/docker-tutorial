@@ -6,7 +6,11 @@ Docker is:
 > an open-source project that automates the deployment of software 
 > applications inside containers by providing an additional layer 
 > of abstraction and automation of OS-level virtualization on Linux.
-This is a fancy way of saying that Docker provides a sandbox type of environment for deployment of applications, in the form of a Docker _container_. A container can be standardized and shipped out to many different machines are once, requiring little or no set-up to organize once the Docker framework is laid out.
+This is a fancy way of saying that Docker provides a sandbox type of environment for deployment of applications, in the form of a Docker _container_. A container can be standardized and shipped out to many different machines are once, requiring little or no set-up to organize once the Docker framework is laid out. Docker is used by a variety of companies to:
+* Increase developer productivity
+* Release software at a faster rate
+* Reduce the need for IT infrastructure
+* Speed up deployment
 
 ## Getting Started with Docker
 Let's first install Docker. Download an installer for [Mac](https://www.docker.com/products/docker-engine#/mac), [Linux](https://www.docker.com/products/docker-engine#/linux), or [Windows](https://www.docker.com/products/docker-engine#/windows). Once the installation is complete, make sure that Docker is installed on your command line by running the following command:
@@ -30,9 +34,9 @@ By passing a command, we instruct the container to  launch, execute our command,
 _So why run our command through a docker container? Isn't this just extra work?_ The answer to this question becomes more apparent as we advance to more complex applications. 
 
 ## Docker and Webapps 
-We are now going to use Docker to deploy a static website. Navigate to the `static-webapp` directory and explore the files there. 
+We are now going to use Docker to deploy a static website. Navigate to the `static-webapp` directory in this tutorial repository and explore the files there. 
 
-The `html` folder holds all of the static content to be served on the website (including HTML and CSS). The `Dockerfile` is of particular importance -- this file defines the base image for our Docker container. Because we are running a very simple application, all Dockerfile is mainly composed of the Alpine version of Nginx, which lets us deploy static HTML.
+The `html` folder holds all of the static content to be served on the website (including HTML). The `Dockerfile` is of particular importance -- this file defines the base image for our Docker container. Because we are running a very simple application, all Dockerfile is mainly composed of the Alpine version of Nginx, which lets us deploy static HTML.
 
 To build our static HTML image, run the following command:
 
