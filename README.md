@@ -6,6 +6,7 @@ Docker is:
 > an open-source project that automates the deployment of software 
 > applications inside containers by providing an additional layer 
 > of abstraction and automation of OS-level virtualization on Linux.
+
 This is a fancy way of saying that Docker provides a sandbox type of environment for deployment of applications, in the form of a Docker _container_. A container can be standardized and shipped out to many different machines are once, requiring little or no set-up to organize once the Docker framework is laid out. Docker is used by a variety of companies to:
 * Increase developer productivity
 * Release software at a faster rate
