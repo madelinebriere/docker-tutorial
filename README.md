@@ -17,6 +17,7 @@ This is a fancy way of saying that Docker provides a sandbox type of environment
 Let's first install Docker. Download an installer for [Mac](https://www.docker.com/products/docker-engine#/mac), [Linux](https://www.docker.com/products/docker-engine#/linux), or [Windows](https://www.docker.com/products/docker-engine#/windows). Once the installation is complete, make sure that Docker is installed on your command line by running the following command:
 
 `docker run hello-world`
+
 `> Hello from Docker....`
 
 Congrats! You officially have Docker installed.
