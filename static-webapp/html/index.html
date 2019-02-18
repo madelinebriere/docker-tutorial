@@ -8,15 +8,27 @@
   <title>Docker :)</title>
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/format.css">
 </head>
-<body>
+<body onload="incrementCount(10)">
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <h1>Congrats! You just launched a custom webpage with Docker!</h1>
+<div class="row">
+<center>
+<h2>
+<br>
+Number of visits: <div id="CounterVisitor">
+</div>
+</h2>
+</center>
+</div>
+<br>
+
 <div class="row">
   	<div class="column">
   		<h2>Task 1: Modify this image</h2>
@@ -33,13 +45,12 @@
 		</ul>
 	</div>
 
-
 	<div class="column">
 	<h2>Task 3: Add a new section</h2>
 		Add something fun here!
 	</div>
 </div>
-<br><br><br>
+<br><br>
 
 <div class="polaroid">
   	<img src="images/docker.jpg" alt="Docker meme" style="width:100%">
@@ -50,5 +61,20 @@
 </body>
 </html>
 
+<script>
+  var n = localStorage.getItem('on_load_counter');
+  if (n === null) {
+    n = 0;
+  }
+  n++;
+
+  localStorage.setItem("on_load_counter", n);
+
+  nums = n.toString().split('').map(Number);
+  document.getElementById('CounterVisitor').innerHTML = '';
+  for (var i of nums) {
+    document.getElementById('CounterVisitor').innerHTML += '<span class="counter-item">' + i + '</span>';
+  }
+</script>
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
