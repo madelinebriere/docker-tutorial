@@ -57,7 +57,7 @@ Try following the instructions listed on the static webpage. Once you have made 
 
 `docker rm <container_id>`
 
-There are more efficient ways to do this, but we will stick with this for ease of understanding. Now you can rebuild and launch an entirely fresh container with your new changes.
+There are more efficient ways to do this, but we will stick with this for ease of understanding. Now you can rebuild and launch an entirely fresh container with your new changes. To do all of these tasks quickly, run the `docker_reset` script.
 
 ### Why does this help us?
 To see the difference between your local computer and the container, run the following commands:
@@ -87,3 +87,4 @@ Unless you already had nginx installed on your computer, you should observe that
 * https://docker-curriculum.com/
 * https://www.katacoda.com/courses/docker/create-nginx-static-web-server
 * https://github.com/prakhar1989/docker-curriculum/blob/master/static-site/html/index.html
+* https://stackoverflow.com/questions/47428504/javascript-count-number-of-visitor-for-website
