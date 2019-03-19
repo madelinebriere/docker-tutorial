@@ -75,7 +75,7 @@ We will now move on an use Docker for a more exciting application. First, we nee
 
 ### MapReduce
 
-In this example, we will incorporate MapReduce. MapReduce is a programming paradigm that enables massive scalability across up to thousands of servers in a cluster. This paradigm performs two types of tasks: (1) Map: Performs sorting and filtering, (2) Reduce: Performs summary operations. This lets us parallize work (e.g., data analysis).
+In this example, we will incorporate MapReduce. MapReduce is a programming paradigm that enables massive scalability across up to thousands of servers in a cluster. This paradigm performs two types of tasks: (1) Map: Performs sorting and filtering, (2) Reduce: Performs summary operations. This lets us parallize work (e.g., data analysis). Learn more about MapReduce in this [tutorial](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html).
 
 ### Example
 Navigate to the `2-mapreduce` folder. This is a very simple example of realizing a map-reduce style workflow with Docker and Python. Note that this example is inspired by the tutorial in this [project](https://github.com/adewes/docker-map-reduce-example/blob/master/README.md).
