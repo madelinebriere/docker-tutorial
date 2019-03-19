@@ -86,6 +86,8 @@ To analyze the data normally (with no Docker):
 
     python analyze.py
 
+This script runs through days of commit messages and tallies how many instances of each word there are. It then spits out the top 100 words used in commit messages. This type of task can be split into sub-tasks (analyzing chunks of time) run via Docker.
+
 To build the Docker image required for the docker-based analyis, run
 
     docker build -t mapreduce-image:v1 .
