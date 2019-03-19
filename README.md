@@ -69,7 +69,7 @@ To see the difference between your local computer and the container, run the fol
 Unless you already had nginx installed on your computer, you should observe that the first command prints out a nginx version while the latter does not. This is because all of the configuration was accomplished on the docker container, rather than your local computer. When you kill this container, the configuration will go with it. With more advanced webpages, we may need a variety of resources to be installed on the container. Docker handles all of this configuration without modifying your local computer settings.
 
 ## Docker and MapReduce
-We will now move on an use Docker for a more exciting application. First, we need to install the necessary packages. We will be performing analysis with Python, so you will need to install Python. Explore how to do this using this [site](https://www.python.org/downloads/). Make sure to download Version 2.7. You also need to install the Docker Python package `docker-py`. On Mac, for example, this command would be:
+We will now use Docker for a more exciting application. First, we need to install the necessary packages. We will be performing analysis with Python, so you will need to install Python. Explore how to do this using this [site](https://www.python.org/downloads/). Make sure to download Version 2.7. You also need to install the Docker Python package `docker-py`. On Mac, for example, this command would be:
 
 ```sudo pip install docker-py```
 
@@ -96,9 +96,9 @@ Then simply run
 
     python docker_parallelize.py
 
-This is simplified in the `docker_reset.sh` script in this folder, which removes old docker containers.
+This is simplified in the `docker_reset.sh` script in this folder, which removes old docker containers. 
 
-This will launch a number of Docker containers, each of which will analyze a portion of the data using the `docker_analyze.py` script. This lets us parallelize the work across several workers, which can be launched on separate machines.
+This will launch a number of Docker containers, each of which will analyze a portion of the data using the `docker_analyze.py` script. This lets us parallelize the work across several workers, which can be launched on separate machines. We still see the same output from this script as the normal data analysis because the results are aggregated at the end of the process.
 
 
 
