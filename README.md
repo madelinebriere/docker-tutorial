@@ -36,7 +36,7 @@ By passing a command, we instruct the container to  launch, execute our command,
 _So why run our command through a docker container? Isn't this just extra work?_ The answer to this question becomes more apparent as we advance to more complex applications. 
 
 ## Docker and Webapps 
-We are now going to use Docker to deploy a static website. Navigate to the `static-webapp` directory in this tutorial repository and explore the files there. 
+We are now going to use Docker to deploy a static website. Navigate to the `1-static-webapp` directory in this tutorial repository and explore the files there. 
 
 The `html` folder holds all of the static content to be served on the website (including HTML). The `Dockerfile` is of particular importance -- this file defines the base image for our Docker container. Because we are running a very simple application, all Dockerfile is mainly composed of the Alpine version of Nginx, which lets us deploy static HTML.
 
@@ -51,7 +51,7 @@ This command builds and configures a docker container. We can now launch this co
 If you visit the page localhost:80, you should now see the static webpage! 
 
 ### Making Changes
-Try following the instructions listed on the static webpage. Once you have made these changes in the `static-webapp` folder, run `docker ps -a` and find the docker container with the status 'Up.'  Run the following commands to get a fresh start:
+Try following the instructions listed on the static webpage. Once you have made these changes in the `1-static-webapp` folder, run `docker ps -a` and find the docker container with the status 'Up.'  Run the following commands to get a fresh start:
 
 `docker stop <container_id>`
 
@@ -67,6 +67,38 @@ To see the difference between your local computer and the container, run the fol
 `nginx -v`
 
 Unless you already had nginx installed on your computer, you should observe that the first command prints out a nginx version while the latter does not. This is because all of the configuration was accomplished on the docker container, rather than your local computer. When you kill this container, the configuration will go with it. With more advanced webpages, we may need a variety of resources to be installed on the container. Docker handles all of this configuration without modifying your local computer settings.
+
+## Docker and MapReduce
+We will now move on an use Docker for a more exciting application. First, we need to install the necessary packages. We will be performing analysis with Python, so you will need to install Python. Explore how to do this using this [site](https://www.python.org/downloads/). Make sure to download Version 2.7. You also need to install the Docker Python package `docker-py`. On Mac, for example, this command would be:
+
+```sudo pip install docker-py```
+
+### MapReduce
+
+In this example, we will incorporate MapReduce. 
+
+### Example
+Navigate to the `2-mapreduce` folder. This is a very simple example of realizing a map-reduce style workflow with Docker and Python.
+
+The example uses data from Github. To fetch the data, simply run `fetch_data.sh`. The data now lives in the `data` folder, representing commit data for several days from Github.
+
+To analyze the data normally (with no Docker):
+
+    python analyze.py
+
+To build the Docker image required for the docker-based analyis, run
+
+    docker build -t mapreduce-image:v1 .
+
+Then simply run
+
+    python docker_parallelize.py
+
+This is simplified in the `docker_reset.sh` script in this folder, which removes old docker containers.
+
+This will launch a number of Docker containers, each of which will analyze a portion of the data using the `docker_analyze.py` script. This lets us parallelize the work across several workers, which can be launched on separate machines.
+
+
 
 ## Useful Docker commands:
 

@@ -7,7 +7,7 @@ html {
 
 /* Applies to all <h1>...</h1> elements. */
 h1 {
-  font-size: 35px;
+  font-size: 30px;
   font-weight: normal;
   color: rgb(10,10,60);
   margin-top: 5px;
