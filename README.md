@@ -78,7 +78,7 @@ We will now move on an use Docker for a more exciting application. First, we nee
 In this example, we will incorporate MapReduce. 
 
 ### Example
-Navigate to the `2-mapreduce` folder. This is a very simple example of realizing a map-reduce style workflow with Docker and Python. Note that this example is inspired by the tutorial in this [tutorial](https://github.com/adewes/docker-map-reduce-example/blob/master/README.md).
+Navigate to the `2-mapreduce` folder. This is a very simple example of realizing a map-reduce style workflow with Docker and Python. Note that this example is inspired by the tutorial in this [project](https://github.com/adewes/docker-map-reduce-example/blob/master/README.md).
 
 The example uses data from Github. To fetch the data, simply run `fetch_data.sh`. The data now lives in the `data` folder, representing commit data for several days from Github.
 
