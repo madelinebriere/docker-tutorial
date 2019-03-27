@@ -117,7 +117,7 @@ Navigate to the `2-mapreduce` folder. This is a very simple example of realizing
 
 The example uses data from Github. To fetch the data, simply run:
 
-	`fetch_data.sh`
+	fetch_data.sh
 
 The data now lives in the `data` folder, representing commit data for several days from Github.
 
@@ -139,8 +139,20 @@ This is simplified in the `2_docker_reset.sh` script in the util folder, which r
 
 This will launch a number of Docker containers, each of which will analyze a portion of the data using the `docker_analyze.py` script. This lets us parallelize the work across several workers, which can be launched on separate machines. We still see the same output from this script as the normal data analysis because the results are aggregated at the end of the process.
 
+## Conclusion
+In this tutorial, you have learned the basics of the tool _Docker_. As you will learn in later tutorials, Docker is revolutionary in the world of cloud computing. Docker lets us launch the exact same code, with the exact same configurations, across thousands of worker nodes in the cloud. This lets us run computationally complex tasks in no time at all. Companies that use Docker to handle massive amounts of data and analysis include:
+* PayPal
+* Spotify
+* Ebay
+* Groupon
+* Uber
+
+Larger companies like Google and Facebook have internal equivalents. 
+
+Explore how Docker can help with cloud computing in the [next tutorial, focusing on AWS.](https://github.com/JamesDaubert/aws-server-tutorial)
 
 
+#
 ## Useful Docker commands:
 
 * `docker ps`: List all running containers.
