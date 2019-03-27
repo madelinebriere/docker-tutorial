@@ -8,9 +8,7 @@ Have you ever wanted to:
 2. Send code to a friend with a different computer and know it will run without failures?
 3. Define a complicated set of configuration rules _just once_, rather than configuring a piece of software each time it runs?
 
-These are all common problems and scenarios that can be solved using _containerization_, which lets us package software into standardized units for development, shipment and deployment. The most commonly used tool for containerization is [Docker](https://www.docker.com/).
-
-Docker is:
+These are all common problems that can be solved using _containerization_, which lets us package software into standardized units for development, shipment and deployment. The most commonly used tool for containerization is [Docker](https://www.docker.com/), which is:
 > an open-source project that automates the deployment of software 
 > applications inside containers by providing an additional layer 
 > of abstraction and automation of OS-level virtualization on Linux.
@@ -21,7 +19,7 @@ This is a fancy way of saying that Docker provides a sandbox type of environment
 * Reduce the need for IT infrastructure
 * Speed up deployment
 
-## Pre-Requisites
+## Prerequisites
 To run these examples, we will need to install the necessary tools and packages.
 
 ### Installing Docker
@@ -31,7 +29,7 @@ Let's first install Docker. Download an installer for [Mac](https://hub.docker.c
 
 `> Hello from Docker....`
 
-Congrats! You officially have Docker installed.
+If your output is as expected: Congrats! You officially have Docker installed. Otherwise, try uninstalling and reinstalling Docker, potentially using commandline tools instead ([Stack Overflow](https://stackoverflow.com/questions/32744780/install-docker-toolbox-on-a-mac-via-command-line) can be very helpful with this). This can be done using tools like Homebrew (a package manager for Linux and Mac).
 
 ### Installing Python and Related Packages
 
@@ -62,16 +60,16 @@ By running this command, we retrieve a local version of Busybox to launch as a c
 
 `docker run busybox echo "I love Busybox!"`
 
-By passing a command, we instruct the container to  launch, execute our command, from within the Busybox container and then exit. This all happens in a split second!
+By passing a command, we instruct the container to  launch, execute our command from within the Busybox container, and then exit. This all happens in a split second!
 
 _So why run our command through a docker container? Isn't this just extra work?_ The answer to this question becomes more apparent as we advance to more complex applications. 
 
 ## Docker and Webapps 
 We are now going to use Docker to deploy a static website. Navigate to the `1-static-webapp` directory in this tutorial repository and explore the files there. 
 
-The `html` folder holds all of the static content to be served on the website (including HTML). The `Dockerfile` is of particular importance -- this file defines the base image for our Docker container. Because we are running a very simple application, the Dockerfile for this example is mainly composed of installation of Nginx, a web server tool that lets us deploy HTML for a website.
+The `html` folder holds all of the static content to be served on the website (including HTML and CSS). The `Dockerfile` is of particular importance -- this file defines the base image for our Docker container. Because we are running a very simple application, the Dockerfile for this example is mainly composed of an installation of Nginx, a web server tool that lets us deploy HTML for a website.
 
-To build our static HTML image, run the following command:
+To build our static HTML image (basically the blueprint for a docker container), run the following command:
 
 `docker build -t webapp-image:v1 .`
 
@@ -79,16 +77,16 @@ This command builds and configures a docker container. We can now launch this co
 
 `docker run -d -p 80:80 webapp-image:v1`
 
-If you visit the page localhost:80, you should now see the static webpage! 
+If you visit the page localhost:80 in your local browser, you should now see the static webpage! If you do not see anything, try reading the next section and using the `1_docker_reset.sh` script to reset and run everything.
 
 ### Making Changes
-Try following the instructions listed on the static webpage. Once you have made these changes in the `1-static-webapp` folder, run `docker ps -a` and find the docker container with the status 'Up.'  Run the following commands to get a fresh start:
+Try following the instructions listed on the static webpage. Once you have made these changes in the `1-static-webapp` folder, run `docker ps -a` and find the docker container with the status 'Up.'  Run the following commands to get a fresh start by stopping and removing the old docker container:
 
 `docker stop <container_id>`
 
 `docker rm <container_id>`
 
-There are more efficient ways to do this, but we will stick with this for ease of understanding. Now you can rebuild and launch an entirely fresh container with your new changes. To do all of these tasks quickly, run the `1_docker_reset` script. You can either run this script from `1-static-webapp` with the command:
+After this, you can run the same commands as before to spin up your docker container. There are more efficient ways to do this, but we will stick with this for ease of understanding. Now you can rebuild and launch an entirely fresh container with your new changes. To do all of these tasks quickly, run the `1_docker_reset` script. You can either run this script from `1-static-webapp` with the command:
 
 `./../util/1_docker_reset.sh`
 
@@ -121,29 +119,29 @@ In this example, we will incorporate MapReduce. MapReduce is a programming parad
 ### Example
 Navigate to the `2-mapreduce` folder. This is a very simple example of realizing a map-reduce style workflow with Docker and Python. Note that this example is inspired by the tutorial in this [project](https://github.com/adewes/docker-map-reduce-example/blob/master/README.md).
 
-The example uses data from Github. To fetch the data, simply run:
+This example uses data from Github. To fetch the data, simply run:
 
-	fetch_data.sh
+	./fetch_data.sh
 
 The data now lives in the `data` folder, representing commit data for several days from Github.
 
-To analyze the data normally (with no Docker):
+To analyze the data normally (with no Docker), run:
 
     python analyze.py
 
 This script runs through days of commit messages and tallies how many instances of each word there are. It then spits out the top 100 words used in commit messages. This type of task can be split into sub-tasks (analyzing chunks of time) run via Docker.
 
-To build the Docker image required for the docker-based analyis, run
+To build the Docker image required for the docker-based analyis, run:
 
     docker build -t mapreduce-image:v1 .
 
-Then simply run
+Then execute the parallelize script:
 
     python docker_parallelize.py
 
 This is simplified in the `2_docker_reset.sh` script in the util folder, which removes old docker containers and runs the `docker_parallelize.py` script. Note that it does not handle data fetching.
 
-This will launch a number of Docker containers, each of which will analyze a portion of the data using the `docker_analyze.py` script. This lets us parallelize the work across several workers, which can be launched on separate machines. We still see the same output from this script as the normal data analysis because the results are aggregated at the end of the process.
+The steps described prior will launch a number of Docker containers, each of which will analyze a portion of the data using the `docker_analyze.py` script. This lets us parallelize the work across several workers, which can be launched on separate machines. We still see the same output from this script as the normal data analysis because the results are aggregated at the end of the process.
 
 ## Conclusion
 In this tutorial, you have learned the basics of the tool _Docker_. As you will learn in later tutorials, Docker is revolutionary in the world of cloud computing. Docker lets us launch the exact same code, with the exact same configurations, across thousands of worker nodes in the cloud. This lets us run computationally complex tasks in no time at all. Companies that use Docker to handle massive amounts of data and analysis include:
