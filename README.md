@@ -25,7 +25,7 @@ This is a fancy way of saying that Docker provides a sandbox type of environment
 To run these examples, we will need to install the necessary tools and packages.
 
 ### Installing Docker
-Let's first install Docker. Download an installer for [Mac](https://www.docker.com/products/docker-engine#/mac), [Linux](https://www.docker.com/products/docker-engine#/linux), or [Windows](https://www.docker.com/products/docker-engine#/windows). Once the installation is complete, make sure that Docker is installed on your command line by running the following command:
+Let's first install Docker. Download an installer for [Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac), [Linux](https://www.linux.com/learn/intro-to-linux/2017/11/how-install-and-use-docker-linux), or [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows). _Note: If you have a Linux computer, the installation of Docker is a bit more involved. If you are up for it, give it a try. Otherwise, try working with someone with a Mac or Windows computer._ Once the installation is complete, make sure that Docker is installed on your command line by running the following command:
 
 `docker run hello-world`
 
