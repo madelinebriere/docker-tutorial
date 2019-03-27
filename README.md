@@ -23,7 +23,12 @@ This is a fancy way of saying that Docker provides a sandbox type of environment
 To run these examples, we will need to install the necessary tools and packages.
 
 ### Installing Docker
-Let's first install Docker. Download an installer for [Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac), [Linux](https://www.linux.com/learn/intro-to-linux/2017/11/how-install-and-use-docker-linux), or [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows). _Note: If you have a Linux computer, the installation of Docker is a bit more involved. If you are up for it, give it a try. Otherwise, try working with someone with a Mac or Windows computer._ Once the installation is complete, make sure that Docker is installed on your command line by running the following command:
+Let's first install Docker. Download an installer for [Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac), [Linux](https://www.linux.com/learn/intro-to-linux/2017/11/how-install-and-use-docker-linux), or [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows). Notes: 
+
+* If you have a Linux computer, the installation of Docker is a bit more involved. If you are up for it, give it a try. Otherwise, try working with someone who has Docker installed.
+* If you have a Windows computer, you must have Windows 10 Pro or Enterprise installed to download Docker. 
+
+Once the installation is complete, make sure that Docker is installed on your command line by running the following command:
 
 `docker run hello-world`
 
@@ -33,7 +38,8 @@ If your output is as expected: Congrats! You officially have Docker installed. O
 
 ### Installing Python and Related Packages
 
-We will be performing analysis with Python, so you will need to install Python. Explore how to do this using this [site](https://www.python.org/downloads/). Make sure to download Version 2.7 for consistency. 
+We will be performing analysis with Python, so you will need to install Python. Explore how to do this using this [site](https://www.python.org/downloads/release/python-2715/
+). Make sure to download Version 2.7 for consistency. 
 
 You also need to install the Docker Python package `docker-py`. This is most easily done using the `pip` command, which should be installed with Python:
 
