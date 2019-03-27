@@ -86,7 +86,7 @@ There are more efficient ways to do this, but we will stick with this for ease o
 
 `./../util/1_docker_reset.sh`
 
-Or you can run this script by navigating to the `util` folder and run:
+Or you can run this script by navigating to the `util` folder and running:
 
 `./1_docker_reset.sh`
 
