@@ -41,6 +41,12 @@ You also need to install the Docker Python package `docker-py`.  On Mac, for exa
 
 ```sudo pip install docker-py```
 
+We described a benefit of Docker as not needing to install local packages. So why do we have to add Python and Docker-py? This is purely because of the way we will be analyzing our data. We will be calling Docker from within Python scripts, which requires the Python itself to be running on your computer. However, the packages used within the launched containers need not be installed locally. Consider the following line from the Dockerfile:
+
+`FROM ubuntu:16.04`
+
+This will pull updates from the Ubuntu software repository inside the Docker container, without modifying your machine. It is this type of local modification we avoid by using Docker.
+
 ## Busybox
 We will now learn more about Docker by running a [Busybox](https://en.wikipedia.org/wiki/BusyBox) container. Busybox provides several Unix utilities in a single source, giving us plenty of built-in functionality with which to work. To get started, fetch the busybox image from the Docker registry:
 
@@ -63,7 +69,7 @@ To build our static HTML image, run the following command:
 
 `docker build -t webapp-image:v1 .`
 
-This command builds and configures a docker container. We can now launch this container on host port and container port 80 with the command:
+This command builds and configures a docker container. We can now launch this container by name on host port and container port 80 with the command:
 
 `docker run -d -p 80:80 webapp-image:v1`
 
@@ -123,13 +129,13 @@ This script runs through days of commit messages and tallies how many instances 
 
 To build the Docker image required for the docker-based analyis, run
 
-    docker build -t example-image:v1 .
+    docker build -t mapreduce-image:v1 .
 
 Then simply run
 
     python docker_parallelize.py
 
-This is simplified in the `docker_reset.sh` script in the util folder, which removes old docker containers. Note that it does not handle data fetching.
+This is simplified in the `2_docker_reset.sh` script in the util folder, which removes old docker containers and runs the `docker_parallelize.py` script. Note that it does not handle data fetching.
 
 This will launch a number of Docker containers, each of which will analyze a portion of the data using the `docker_analyze.py` script. This lets us parallelize the work across several workers, which can be launched on separate machines. We still see the same output from this script as the normal data analysis because the results are aggregated at the end of the process.
 
