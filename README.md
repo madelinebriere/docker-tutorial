@@ -46,15 +46,15 @@ _So why run our command through a docker container? Isn't this just extra work?_
 ## Docker and Webapps 
 We are now going to use Docker to deploy a static website. Navigate to the `1-static-webapp` directory in this tutorial repository and explore the files there. 
 
-The `html` folder holds all of the static content to be served on the website (including HTML). The `Dockerfile` is of particular importance -- this file defines the base image for our Docker container. Because we are running a very simple application, all Dockerfile is mainly composed of the Alpine version of Nginx, which lets us deploy static HTML.
+The `html` folder holds all of the static content to be served on the website (including HTML). The `Dockerfile` is of particular importance -- this file defines the base image for our Docker container. Because we are running a very simple application, the Dockerfile for this example is mainly composed of installation of Nginx, a web server tool that lets us deploy HTML for a website.
 
 To build our static HTML image, run the following command:
 
-`docker build -t webserver-image:v1 .`
+`docker build -t webapp-image:v1 .`
 
 This command builds and configures a docker container. We can now launch this container on host port and container port 80 with the command:
 
-`docker run -d -p 80:80 webserver-image:v1`
+`docker run -d -p 80:80 webapp-image:v1`
 
 If you visit the page localhost:80, you should now see the static webpage! 
 
@@ -65,21 +65,31 @@ Try following the instructions listed on the static webpage. Once you have made 
 
 `docker rm <container_id>`
 
-There are more efficient ways to do this, but we will stick with this for ease of understanding. Now you can rebuild and launch an entirely fresh container with your new changes. To do all of these tasks quickly, run the `docker_reset` script.
+There are more efficient ways to do this, but we will stick with this for ease of understanding. Now you can rebuild and launch an entirely fresh container with your new changes. To do all of these tasks quickly, run the `1_docker_reset` script. You can either run this script from `1-static-webapp` with the command:
+
+`./../util/1_docker_reset.sh`
+
+Or you can run this script by navigating to the `util` folder and run:
+
+`./1_docker_reset.sh`
+
+If you get a _Permission Denied_ error, try running the following command from the `util` folder:
+
+`chmod +x 1_docker_reset.sh`
+
+This command changes the permissions on the file so that you can run it locally.
+
 
 ### Why does this help us?
 To see the difference between your local computer and the container, run the following commands:
 
-`docker run webserver-image:v1 nginx -v`
+`docker run webapp-image:v1 nginx -v`
 
 `nginx -v`
 
 Unless you already had nginx installed on your computer, you should observe that the first command prints out a nginx version while the latter does not. This is because all of the configuration was accomplished on the docker container, rather than your local computer. When you kill this container, the configuration will go with it. With more advanced webpages, we may need a variety of resources to be installed on the container. Docker handles all of this configuration without modifying your local computer settings.
 
 ## Docker and MapReduce
-We will now use Docker for a more exciting application. First, we need to install the necessary packages. We will be performing analysis with Python, so you will need to install Python. Explore how to do this using this [site](https://www.python.org/downloads/). Make sure to download Version 2.7. You also need to install the Docker Python package `docker-py`. On Mac, for example, this command would be:
-
-```sudo pip install docker-py```
 
 ### MapReduce
 
@@ -88,7 +98,11 @@ In this example, we will incorporate MapReduce. MapReduce is a programming parad
 ### Example
 Navigate to the `2-mapreduce` folder. This is a very simple example of realizing a map-reduce style workflow with Docker and Python. Note that this example is inspired by the tutorial in this [project](https://github.com/adewes/docker-map-reduce-example/blob/master/README.md).
 
-The example uses data from Github. To fetch the data, simply run `fetch_data.sh`. The data now lives in the `data` folder, representing commit data for several days from Github.
+The example uses data from Github. To fetch the data, simply run:
+
+	`fetch_data.sh`
+
+The data now lives in the `data` folder, representing commit data for several days from Github.
 
 To analyze the data normally (with no Docker):
 
@@ -98,13 +112,13 @@ This script runs through days of commit messages and tallies how many instances 
 
 To build the Docker image required for the docker-based analyis, run
 
-    docker build -t mapreduce-image:v1 .
+    docker build -t example-image:v1 .
 
 Then simply run
 
     python docker_parallelize.py
 
-This is simplified in the `docker_reset.sh` script in this folder, which removes old docker containers. 
+This is simplified in the `docker_reset.sh` script in the util folder, which removes old docker containers. Note that it does not handle data fetching.
 
 This will launch a number of Docker containers, each of which will analyze a portion of the data using the `docker_analyze.py` script. This lets us parallelize the work across several workers, which can be launched on separate machines. We still see the same output from this script as the normal data analysis because the results are aggregated at the end of the process.
 
