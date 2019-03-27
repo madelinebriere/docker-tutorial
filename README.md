@@ -2,6 +2,14 @@
 ## CS308
 
 ## An Introduction to Docker
+Have you ever wanted to:
+
+1. Run code locally without installing tons of packages and dependencies on your computer?
+2. Send code to a friend with a different computer and know it will run without failures?
+3. Define a complicated set of configuration rules _just once_, rather than configuring a piece of software each time it runs?
+
+These are all common problems and scenarios that can be solved using _containerization_, which lets us package software into standardized units for development, shipment and deployment. The most commonly used tool for containerization is [Docker](https://www.docker.com/).
+
 Docker is:
 > an open-source project that automates the deployment of software 
 > applications inside containers by providing an additional layer 
