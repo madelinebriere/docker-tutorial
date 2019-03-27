@@ -37,9 +37,15 @@ Congrats! You officially have Docker installed.
 
 We will be performing analysis with Python, so you will need to install Python. Explore how to do this using this [site](https://www.python.org/downloads/). Make sure to download Version 2.7 for consistency. 
 
-You also need to install the Docker Python package `docker-py`.  On Mac, for example, this command would be:
+You also need to install the Docker Python package `docker-py`. This is most easily done using the `pip` command, which should be installed with Python:
 
 ```sudo pip install docker-py```
+
+If this does not work, check if you have pip installed by running:
+
+`which pip`
+
+If you do not have `pip` installed, follow [these instructions](https://pip.pypa.io/en/stable/installing/) to install it.
 
 We described a benefit of Docker as not needing to install local packages. So why do we have to add Python and Docker-py? This is purely because of the way we will be analyzing our data. We will be calling Docker from within Python scripts, which requires the Python itself to be running on your computer. However, the packages used within the launched containers need not be installed locally. Consider the following line from the Dockerfile:
 
