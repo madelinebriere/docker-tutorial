@@ -21,7 +21,10 @@ This is a fancy way of saying that Docker provides a sandbox type of environment
 * Reduce the need for IT infrastructure
 * Speed up deployment
 
-## Getting Started with Docker
+## Pre-Requisites
+To run these examples, we will need to install the necessary tools and packages.
+
+### Installing Docker
 Let's first install Docker. Download an installer for [Mac](https://www.docker.com/products/docker-engine#/mac), [Linux](https://www.docker.com/products/docker-engine#/linux), or [Windows](https://www.docker.com/products/docker-engine#/windows). Once the installation is complete, make sure that Docker is installed on your command line by running the following command:
 
 `docker run hello-world`
@@ -29,6 +32,14 @@ Let's first install Docker. Download an installer for [Mac](https://www.docker.c
 `> Hello from Docker....`
 
 Congrats! You officially have Docker installed.
+
+### Installing Python and Related Packages
+
+We will be performing analysis with Python, so you will need to install Python. Explore how to do this using this [site](https://www.python.org/downloads/). Make sure to download Version 2.7 for consistency. 
+
+You also need to install the Docker Python package `docker-py`.  On Mac, for example, this command would be:
+
+```sudo pip install docker-py```
 
 ## Busybox
 We will now learn more about Docker by running a [Busybox](https://en.wikipedia.org/wiki/BusyBox) container. Busybox provides several Unix utilities in a single source, giving us plenty of built-in functionality with which to work. To get started, fetch the busybox image from the Docker registry:
@@ -77,9 +88,6 @@ To see the difference between your local computer and the container, run the fol
 Unless you already had nginx installed on your computer, you should observe that the first command prints out a nginx version while the latter does not. This is because all of the configuration was accomplished on the docker container, rather than your local computer. When you kill this container, the configuration will go with it. With more advanced webpages, we may need a variety of resources to be installed on the container. Docker handles all of this configuration without modifying your local computer settings.
 
 ## Docker and MapReduce
-We will now use Docker for a more exciting application. First, we need to install the necessary packages. We will be performing analysis with Python, so you will need to install Python. Explore how to do this using this [site](https://www.python.org/downloads/). Make sure to download Version 2.7. You also need to install the Docker Python package `docker-py`. On Mac, for example, this command would be:
-
-```sudo pip install docker-py```
 
 ### MapReduce
 
