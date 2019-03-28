@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import os
 import json
 import gzip
@@ -9,7 +11,6 @@ Analysis script to run inside the Docker container.
 """
 
 DATA_DIRECTORY = '/data'
-OUTPUT_DIRECTORY = '/out'
 
 def analyze_file(filename):
     word_frequencies = collections.defaultdict(lambda:0)
@@ -25,12 +26,8 @@ def analyze_file(filename):
     return word_frequencies
 
 if __name__ == '__main__':
-    print("Working directory: {}".format(os.getcwd()))
     input_filenames=os.environ['INPUT_FILENAMES'].split(';')
     for input_filename in input_filenames:
-        print("Analyzing file: {}".format(input_filename))
         output_filename = input_filename[:-3]#we cut away the .gz
-        print("Writing result to: {}".format(output_filename))
         result=analyze_file(input_filename)
-        with open(os.path.join(OUTPUT_DIRECTORY,output_filename),'w') as output_file:
-            output_file.write(json.dumps(result))
+        print(json.dumps(result)+";;")
