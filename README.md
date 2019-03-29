@@ -75,19 +75,14 @@ Try following the instructions listed on the static webpage. Once you have made 
 
 	docker rm <container_id>
 
-After this, you can run the same commands as before to spin up your docker container. There are more efficient ways to do this, but we will stick with this for ease of understanding. Now you can rebuild and launch an entirely fresh container with your new changes. To do all of these tasks quickly, run the `1_docker_reset` script. You can either run this script from `1-static-webapp` with the command:
+After this, you can run the same commands as before to spin up your docker container. There are more efficient ways to do this, but we will stick with this for ease of understanding. Now you can rebuild and launch an entirely fresh container with your new changes. To do all of these tasks quickly, run the `1_docker_reset` script. Run this script from `1-static-webapp` with the command:
 
 	./../util/1_docker_reset.sh
 
-Or you can run this script by navigating to the `util` folder and running:
+If you get a _Permission Denied_ error, try changing the permissions on the file by running one of the following commands from the `1-static-webapp` folder:
 
-	./1_docker_reset.sh
-
-If you get a _Permission Denied_ error, try running the following command from the `util` folder:
-
-	chmod +x 1_docker_reset.sh
-
-This command changes the permissions on the file so that you can run it locally.
+* Mac/Linux: `chmod +x ../util/1_docker_reset.sh`
+* Windows: `cacls ../util/1_docker_reset.sh /g everyone:f`
 
 #
 #
