@@ -180,3 +180,4 @@ Explore how Docker can help with cloud computing in the [next tutorial, focusing
 * https://www.katacoda.com/courses/docker/create-nginx-static-web-server
 * https://github.com/prakhar1989/docker-curriculum/blob/master/static-site/html/index.html
 * https://github.com/adewes/docker-map-reduce-example/blob/master/README.md
+* https://gist.github.com/zbyte64/6800eae10ce082bb78f0b7a2cca5cbc2
