@@ -142,13 +142,13 @@ index                                   :3244
 
 For the Docker-based version of this example, you do _not_ need to install Python. This is the beauty of Docker -- we can run the entire script in a Docker container without modifying our local computer.
 
-Take a minute to examine the Dockerfile for this example. It is much more complex than the previous Dockerfile. You will see that both the `docker_parallelize.py` and `docker_analyze.py` scripts are copied in to the container, as we will be executing the parallelize script from the master container, and the analyze script from the subsequent slave containers. You will also note that Python is installed within the Docker container to run these scripts. 
+Take a minute to examine the Dockerfile for this example. It is much more complex than the previous Dockerfile. You will see that both the `docker_parallelize.py` and `docker_analyze.py` scripts are copied into the container, as we will be executing the parallelize script from the master container, and the analyze script from the subsequent slave containers. You will also note that Python is installed within the Docker container to run these scripts. 
 
 To build the Docker image required for the docker-based analyis, run:
 
     docker build -t mapreduce-image:v1 .
 
-We can then run the Docker container. Because we will be launching a series of additional Docker containers from this container, we need to have Docker also running within the container. This is why we pass in the `/var/run.docker.sock` variable for our container. 
+We can then run the master Docker container. Because we will be launching a series of additional Docker containers from the master container, we need to have Docker also running here. This is why we pass in the `/var/run.docker.sock` variable for our container. 
 
     docker run -v /var/run/docker.sock:/var/run/docker.sock mapreduce-image:v1
 
