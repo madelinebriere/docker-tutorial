@@ -118,7 +118,7 @@ The data now lives in the `data` folder, representing commit data for several da
 
 #### Normal Analysis
 
-To analyze the data normally (with no Docker), we use Python on our local computer. If you already have Python installed or would like to install it, explore how to do this using this [site](https://www.python.org/downloads/release/python-2715/
+To analyze the data normally (with no Docker), we use Python on our local computer. If you already have Python installed, proceed with this example. If you would like to install it, explore how to do this using this [site](https://www.python.org/downloads/release/python-2715/
 ). Make sure to download Version 2.7 for consistency. With Python installed, we can run the analysis script locally:
 
 	python analyze.py      # optional
