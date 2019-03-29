@@ -164,7 +164,7 @@ The steps described prior will launch a number of Docker containers, each of whi
 #
 #
 > ```diff
-> + Checkpoint Number 3: At this point, you should have a valid output from the Dockerized script in your terminal.
+> + Checkpoint Number 3: At this point, you should have a valid output from the Dockerized script.
 > ```
 #
 #
