@@ -27,20 +27,19 @@ Let's first install Docker. Download an installer for [Mac](https://hub.docker.c
 
 Once the installation is complete, make sure that Docker is installed on your command line by running the following command:
 
-`docker run hello-world`
-
-`> Hello from Docker....`
+	docker run hello-world
+	> Hello from Docker....
 
 If your output is as expected: Congrats! You officially have Docker installed. Otherwise, try uninstalling and reinstalling Docker, potentially using commandline tools instead ([Stack Overflow](https://stackoverflow.com/questions/32744780/install-docker-toolbox-on-a-mac-via-command-line) can be very helpful with this). This can be done using tools like Homebrew (a package manager for Linux and Mac).
 
 ## Busybox
 We will now learn more about Docker by running a [Busybox](https://en.wikipedia.org/wiki/BusyBox) container. Busybox provides several Unix utilities in a single source, giving us plenty of built-in functionality with which to work. To get started, fetch the busybox image from the Docker registry:
 
-`docker pull busybox`
+	docker pull busybox
 
 By running this command, we retrieve a local version of Busybox to launch as a container on our system. We can now test this container by typing:
 
-`docker run busybox echo "I love Busybox!"`
+	docker run busybox echo "I love Busybox!"
 
 By passing a command, we instruct the container to  launch, execute our command from within the Busybox container, and then exit. This all happens in a split second!
 
@@ -53,32 +52,32 @@ The `html` folder holds all of the static content to be served on the website (i
 
 To build our static HTML image (basically the blueprint for a docker container), run the following command:
 
-`docker build -t webapp-image:v1 .`
+	docker build -t webapp-image:v1 .
 
 This command builds and configures a docker container. We can now launch this container by name on host port and container port 80 with the command:
 
-`docker run -d -p 80:80 webapp-image:v1`
+	docker run -d -p 80:80 webapp-image:v1
 
 If you visit the page localhost:80 in your local browser, you should now see the static webpage! If you do not see anything, try reading the next section and using the `1_docker_reset.sh` script to reset and run everything.
 
 ### Making Changes
 Try following the instructions listed on the static webpage. Once you have made these changes in the `1-static-webapp` folder, run `docker ps -a` and find the docker container with the status 'Up.'  Run the following commands to get a fresh start by stopping and removing the old docker container:
 
-`docker stop <container_id>`
+	docker stop <container_id>
 
-`docker rm <container_id>`
+	docker rm <container_id>
 
 After this, you can run the same commands as before to spin up your docker container. There are more efficient ways to do this, but we will stick with this for ease of understanding. Now you can rebuild and launch an entirely fresh container with your new changes. To do all of these tasks quickly, run the `1_docker_reset` script. You can either run this script from `1-static-webapp` with the command:
 
-`./../util/1_docker_reset.sh`
+	./../util/1_docker_reset.sh
 
 Or you can run this script by navigating to the `util` folder and running:
 
-`./1_docker_reset.sh`
+	./1_docker_reset.sh
 
 If you get a _Permission Denied_ error, try running the following command from the `util` folder:
 
-`chmod +x 1_docker_reset.sh`
+	chmod +x 1_docker_reset.sh
 
 This command changes the permissions on the file so that you can run it locally.
 
@@ -86,9 +85,9 @@ This command changes the permissions on the file so that you can run it locally.
 ### Why does this help us?
 To see the difference between your local computer and the container, run the following commands:
 
-`docker run webapp-image:v1 nginx -v`
+	docker run webapp-image:v1 nginx -v
 
-`nginx -v`
+	nginx -v
 
 Unless you already had nginx installed on your computer, you should observe that the first command prints out a nginx version while the latter does not. This is because all of the configuration was accomplished on the docker container, rather than your local computer. When you kill this container, the configuration will go with it. With more advanced webpages, we may need a variety of resources to be installed on the container. Docker handles all of this configuration without modifying your local computer settings.
 
@@ -112,7 +111,7 @@ The data now lives in the `data` folder, representing commit data for several da
 To analyze the data normally (with no Docker), we use Python on our local computer. If you already have Python installed or would like to install it, explore how to do this using this [site](https://www.python.org/downloads/release/python-2715/
 ). Make sure to download Version 2.7 for consistency. With Python installed, we can run the analysis script locally:
 
-`python analyze.py` (optional)
+	python analyze.py      # optional
 
 This script runs through days of commit messages and tallies how many instances of each word there are. It then spits out the top 100 words used in commit messages. This type of task can be split into sub-tasks (analyzing chunks of time) run via Docker. The output looks something like this:
 ```
