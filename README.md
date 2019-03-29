@@ -32,6 +32,14 @@ Once the installation is complete, make sure that Docker is installed on your co
 
 If your output is as expected: Congrats! You officially have Docker installed. Otherwise, try uninstalling and reinstalling Docker, potentially using commandline tools instead ([Stack Overflow](https://stackoverflow.com/questions/32744780/install-docker-toolbox-on-a-mac-via-command-line) can be very helpful with this). This can be done using tools like Homebrew (a package manager for Linux and Mac).
 
+#
+#
+> ```diff
+> + Checkpoint Number 1: At this point, you should have Docker installed.
+> ```
+#
+#
+
 ## Busybox
 We will now learn more about Docker by running a [Busybox](https://en.wikipedia.org/wiki/BusyBox) container. Busybox provides several Unix utilities in a single source, giving us plenty of built-in functionality with which to work. To get started, fetch the busybox image from the Docker registry:
 
@@ -84,7 +92,7 @@ This command changes the permissions on the file so that you can run it locally.
 #
 #
 > ```diff
-> + Checkpoint Number 1: At this point, you should have a modified webpage running locally.
+> + Checkpoint Number 2: At this point, you should have a modified webpage running locally.
 > ```
 #
 #
@@ -152,6 +160,14 @@ We can then run the Docker container. Because we will be launching a series of a
 This is simplified in the `2_docker_reset.sh` script in the util folder, which removes old docker containers and runs the `docker_parallelize.py` script. Note that it does not handle data fetching.
 
 The steps described prior will launch a number of Docker containers, each of which will analyze a portion of the data using the `docker_analyze.py` script. This lets us parallelize the work across several workers, which can be launched on separate machines. We still see the same output from this script as the normal data analysis because the results are aggregated at the end of the process. You should see the same output from this series of steps as the "normal" analysis.
+
+#
+#
+> ```diff
+> + Checkpoint Number 3: At this point, you should have a valid output from the Dockerized script in your terminal.
+> ```
+#
+#
 
 ## Conclusion
 In this tutorial, you have learned the basics of the tool _Docker_. As you will learn in later tutorials, Docker is revolutionary in the world of cloud computing. Docker lets us launch the exact same code, with the exact same configurations, across thousands of worker nodes in the cloud. This lets us run computationally complex tasks in no time at all. Companies that use Docker to handle massive amounts of data and analysis include:
