@@ -81,6 +81,13 @@ If you get a _Permission Denied_ error, try running the following command from t
 
 This command changes the permissions on the file so that you can run it locally.
 
+#
+#
+> ```diff
+> + Checkpoint Number 1: At this point, you should have a modified webpage running locally.
+> ```
+#
+#
 
 ### Why does this help us?
 To see the difference between your local computer and the container, run the following commands:
