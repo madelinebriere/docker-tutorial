@@ -19,52 +19,35 @@ This is a fancy way of saying that Docker provides a sandbox type of environment
 * Reduce the need for IT infrastructure
 * Speed up deployment
 
-## Prerequisites
-To run these examples, we will need to install the necessary tools and packages.
-
-### Installing Docker
-Let's first install Docker. Download an installer for [Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac), [Linux](https://www.linux.com/learn/intro-to-linux/2017/11/how-install-and-use-docker-linux), or [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows). Notes: 
+## Installing Docker
+Let's first install Docker. Download an installer for [Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac), [Linux](https://www.linux.com/learn/intro-to-linux/2017/11/how-install-and-use-docker-linux), or [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows). You may have to create a Docker account to do so. Notes: 
 
 * If you have a Linux computer, the installation of Docker is a bit more involved. If you are up for it, give it a try. Otherwise, try working with someone who has Docker installed.
 * If you have a Windows computer, you must have Windows 10 Pro or Enterprise installed to download Docker. 
 
 Once the installation is complete, make sure that Docker is installed on your command line by running the following command:
 
-`docker run hello-world`
-
-`> Hello from Docker....`
+	docker run hello-world
+	> Hello from Docker....
 
 If your output is as expected: Congrats! You officially have Docker installed. Otherwise, try uninstalling and reinstalling Docker, potentially using commandline tools instead ([Stack Overflow](https://stackoverflow.com/questions/32744780/install-docker-toolbox-on-a-mac-via-command-line) can be very helpful with this). This can be done using tools like Homebrew (a package manager for Linux and Mac).
 
-### Installing Python and Related Packages
-
-We will be performing analysis with Python, so you will need to install Python. Explore how to do this using this [site](https://www.python.org/downloads/release/python-2715/
-). Make sure to download Version 2.7 for consistency. 
-
-You also need to install the Docker Python package `docker-py`. This is most easily done using the `pip` command, which should be installed with Python:
-
-```sudo pip install docker-py```
-
-If this does not work, check if you have pip installed by running:
-
-`which pip`
-
-If you do not have `pip` installed, follow [these instructions](https://pip.pypa.io/en/stable/installing/) to install it.
-
-We described a benefit of Docker as not needing to install local packages. So why do we have to add Python and Docker-py? This is purely because of the way we will be analyzing our data. We will be calling Docker from within Python scripts, which requires the Python itself to be running on your computer. However, the packages used within the launched containers need not be installed locally. Consider the following line from the Dockerfile:
-
-`FROM ubuntu:16.04`
-
-This will pull updates from the Ubuntu software repository inside the Docker container, without modifying your machine. It is this type of local modification we avoid by using Docker.
+#
+#
+> ```diff
+> + Checkpoint Number 1: At this point, you should have Docker installed.
+> ```
+#
+#
 
 ## Busybox
 We will now learn more about Docker by running a [Busybox](https://en.wikipedia.org/wiki/BusyBox) container. Busybox provides several Unix utilities in a single source, giving us plenty of built-in functionality with which to work. To get started, fetch the busybox image from the Docker registry:
 
-`docker pull busybox`
+	docker pull busybox
 
 By running this command, we retrieve a local version of Busybox to launch as a container on our system. We can now test this container by typing:
 
-`docker run busybox echo "I love Busybox!"`
+	docker run busybox echo "I love Busybox!"
 
 By passing a command, we instruct the container to  launch, execute our command from within the Busybox container, and then exit. This all happens in a split second!
 
@@ -77,42 +60,44 @@ The `html` folder holds all of the static content to be served on the website (i
 
 To build our static HTML image (basically the blueprint for a docker container), run the following command:
 
-`docker build -t webapp-image:v1 .`
+	docker build -t webapp-image:v1 .
 
 This command builds and configures a docker container. We can now launch this container by name on host port and container port 80 with the command:
 
-`docker run -d -p 80:80 webapp-image:v1`
+	docker run -d -p 80:80 webapp-image:v1
 
 If you visit the page localhost:80 in your local browser, you should now see the static webpage! If you do not see anything, try reading the next section and using the `1_docker_reset.sh` script to reset and run everything.
 
 ### Making Changes
 Try following the instructions listed on the static webpage. Once you have made these changes in the `1-static-webapp` folder, run `docker ps -a` and find the docker container with the status 'Up.'  Run the following commands to get a fresh start by stopping and removing the old docker container:
 
-`docker stop <container_id>`
+	docker stop <container_id>
 
-`docker rm <container_id>`
+	docker rm <container_id>
 
-After this, you can run the same commands as before to spin up your docker container. There are more efficient ways to do this, but we will stick with this for ease of understanding. Now you can rebuild and launch an entirely fresh container with your new changes. To do all of these tasks quickly, run the `1_docker_reset` script. You can either run this script from `1-static-webapp` with the command:
+After this, you can run the same commands as before to spin up your docker container. There are more efficient ways to do this, but we will stick with this for ease of understanding. Now you can rebuild and launch an entirely fresh container with your new changes. To do all of these tasks quickly, run the `1_docker_reset` script. Run this script from `1-static-webapp` with the command:
 
-`./../util/1_docker_reset.sh`
+	./../util/1_docker_reset.sh
 
-Or you can run this script by navigating to the `util` folder and running:
+If you get a _Permission Denied_ error, try changing the permissions on the file by running one of the following commands from the `1-static-webapp` folder:
 
-`./1_docker_reset.sh`
+* Mac/Linux: `chmod +x ../util/1_docker_reset.sh`
+* Windows: `cacls ../util/1_docker_reset.sh /g everyone:f`
 
-If you get a _Permission Denied_ error, try running the following command from the `util` folder:
-
-`chmod +x 1_docker_reset.sh`
-
-This command changes the permissions on the file so that you can run it locally.
-
+#
+#
+> ```diff
+> + Checkpoint Number 2: At this point, you should have a modified webpage running locally.
+> ```
+#
+#
 
 ### Why does this help us?
 To see the difference between your local computer and the container, run the following commands:
 
-`docker run webapp-image:v1 nginx -v`
+	docker run webapp-image:v1 nginx -v
 
-`nginx -v`
+	nginx -v
 
 Unless you already had nginx installed on your computer, you should observe that the first command prints out a nginx version while the latter does not. This is because all of the configuration was accomplished on the docker container, rather than your local computer. When you kill this container, the configuration will go with it. With more advanced webpages, we may need a variety of resources to be installed on the container. Docker handles all of this configuration without modifying your local computer settings.
 
@@ -131,23 +116,53 @@ This example uses data from Github. To fetch the data, simply run:
 
 The data now lives in the `data` folder, representing commit data for several days from Github.
 
-To analyze the data normally (with no Docker), run:
+#### Normal Analysis
 
-    python analyze.py
+To analyze the data normally (with no Docker), we use Python on our local computer. If you already have Python installed, proceed with this example. If you would like to install it, explore how to do this using this [site](https://www.python.org/downloads/release/python-2715/
+). Make sure to download Version 2.7 for consistency. With Python installed, we can run the analysis script locally:
 
-This script runs through days of commit messages and tallies how many instances of each word there are. It then spits out the top 100 words used in commit messages. This type of task can be split into sub-tasks (analyzing chunks of time) run via Docker.
+	python analyze.py      # optional
+
+This script runs through days of commit messages and tallies how many instances of each word there are. It then spits out the top 100 words used in commit messages. This type of task can be split into sub-tasks (analyzing chunks of time) run via Docker. The output looks something like this:
+```
+Top 100 words used in Github commits:
+node_modules                            :95254
+to                                      :46432
+the                                     :43311
+-                                       :40486
+a                                       :26657
+for                                     :25784
+...
+an                                      :3270
+apis                                    :3248
+index                                   :3244
+```
+
+#### Dockerized Analysis
+
+For the Docker-based version of this example, you do _not_ need to install Python. This is the beauty of Docker -- we can run the entire script in a Docker container without modifying our local computer.
+
+Take a minute to examine the Dockerfile for this example. It is much more complex than the previous Dockerfile. You will see that both the `docker_parallelize.py` and `docker_analyze.py` scripts are copied into the container, as we will be executing the parallelize script from the master container, and the analyze script from the subsequent slave containers. You will also note that Python is installed within the Docker container to run these scripts. 
 
 To build the Docker image required for the docker-based analyis, run:
 
     docker build -t mapreduce-image:v1 .
 
-Then execute the parallelize script:
+We can then run the master Docker container. Because we will be launching a series of additional Docker containers from the master container, we need to have Docker also running here. This is why we pass in the `/var/run.docker.sock` variable for our container. 
 
-    python docker_parallelize.py
+    docker run -v /var/run/docker.sock:/var/run/docker.sock mapreduce-image:v1
 
 This is simplified in the `2_docker_reset.sh` script in the util folder, which removes old docker containers and runs the `docker_parallelize.py` script. Note that it does not handle data fetching.
 
-The steps described prior will launch a number of Docker containers, each of which will analyze a portion of the data using the `docker_analyze.py` script. This lets us parallelize the work across several workers, which can be launched on separate machines. We still see the same output from this script as the normal data analysis because the results are aggregated at the end of the process.
+The steps described prior will launch a number of Docker containers, each of which will analyze a portion of the data using the `docker_analyze.py` script. This lets us parallelize the work across several workers, which can be launched on separate machines. We still see the same output from this script as the normal data analysis because the results are aggregated at the end of the process. You should see the same output from this series of steps as the "normal" analysis.
+
+#
+#
+> ```diff
+> + Checkpoint Number 3: At this point, you should have a valid output from the Dockerized script.
+> ```
+#
+#
 
 ## Conclusion
 In this tutorial, you have learned the basics of the tool _Docker_. As you will learn in later tutorials, Docker is revolutionary in the world of cloud computing. Docker lets us launch the exact same code, with the exact same configurations, across thousands of worker nodes in the cloud. This lets us run computationally complex tasks in no time at all. Companies that use Docker to handle massive amounts of data and analysis include:
@@ -183,3 +198,4 @@ Explore how Docker can help with cloud computing in the [next tutorial, focusing
 * https://www.katacoda.com/courses/docker/create-nginx-static-web-server
 * https://github.com/prakhar1989/docker-curriculum/blob/master/static-site/html/index.html
 * https://github.com/adewes/docker-map-reduce-example/blob/master/README.md
+* https://gist.github.com/zbyte64/6800eae10ce082bb78f0b7a2cca5cbc2
