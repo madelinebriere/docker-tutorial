@@ -24,14 +24,6 @@ def get_files(directory):
     filenames = os.listdir(directory)
     return sorted([filename for filename in filenames if filename.endswith('.json.gz')])
 
-def reduce_output_files():
-    filenames = [filename for filename in os.listdir(OUTPUT_DIRECTORY) if filename.endswith('.json')]
-    results = []
-    for filename in filenames:
-        with open(os.path.join(OUTPUT_DIRECTORY,filename),'r') as input_file:
-            results.append(json.loads(input_file.read()))
-    return reduce_results(results)
-
 def reduce_results(results):
     word_frequencies = collections.defaultdict(lambda:0)
     for result in results:
