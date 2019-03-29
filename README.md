@@ -20,7 +20,7 @@ This is a fancy way of saying that Docker provides a sandbox type of environment
 * Speed up deployment
 
 ## Installing Docker
-Let's first install Docker. Download an installer for [Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac), [Linux](https://www.linux.com/learn/intro-to-linux/2017/11/how-install-and-use-docker-linux), or [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows). Notes: 
+Let's first install Docker. Download an installer for [Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac), [Linux](https://www.linux.com/learn/intro-to-linux/2017/11/how-install-and-use-docker-linux), or [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows). You may have to create a Docker account to do so. Notes: 
 
 * If you have a Linux computer, the installation of Docker is a bit more involved. If you are up for it, give it a try. Otherwise, try working with someone who has Docker installed.
 * If you have a Windows computer, you must have Windows 10 Pro or Enterprise installed to download Docker. 
