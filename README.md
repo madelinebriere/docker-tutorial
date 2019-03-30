@@ -23,14 +23,17 @@ This is a fancy way of saying that Docker provides a sandbox type of environment
 Let's first install Docker. Download an installer for [Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac), [Linux](https://www.linux.com/learn/intro-to-linux/2017/11/how-install-and-use-docker-linux), or [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows). You may have to create a Docker account to do so. Notes: 
 
 * If you have a Linux computer, the installation of Docker is a bit more involved. If you are up for it, give it a try. Otherwise, try working with someone who has Docker installed.
-* If you have a Windows computer, you must have Windows 10 Pro or Enterprise installed to download Docker. 
+* If you have a Windows computer, you must have Windows 10 Pro or Enterprise installed to download Docker this way.
 
 Once the installation is complete, make sure that Docker is installed on your command line by running the following command:
 
 	docker run hello-world
 	> Hello from Docker....
 
-If your output is as expected: Congrats! You officially have Docker installed. Otherwise, try uninstalling and reinstalling Docker, potentially using commandline tools instead ([Stack Overflow](https://stackoverflow.com/questions/32744780/install-docker-toolbox-on-a-mac-via-command-line) can be very helpful with this). This can be done using tools like Homebrew (a package manager for Linux and Mac).
+If your output is as expected: Congrats! You officially have Docker installed. Otherwise, try one of the following solutions:
+* Uninstalling and reinstalling Docker, potentially using commandline tools instead ([Stack Overflow](https://stackoverflow.com/questions/32744780/install-docker-toolbox-on-a-mac-via-command-line) can be very helpful with this). This can be done using tools like Homebrew (a package manager for Linux and Mac). 
+* If the installation indicates that your Mac or Windows version is not high enough, try the alternate solution explained [here](https://docs.docker.com/toolbox/toolbox_install_windows/).
+* If it seems to be a permission issue, run Docker as an administrator (e.g., on Mac, use `sudo`).
 
 #
 #
@@ -66,7 +69,11 @@ This command builds and configures a docker container. We can now launch this co
 
 	docker run -d -p 80:80 webapp-image:v1
 
-If you visit the page localhost:80 in your local browser, you should now see the static webpage! If you do not see anything, try reading the next section and using the `1_docker_reset.sh` script to reset and run everything.
+Now follow the relevant instructions to view the static webpage:
+* Mac/Linux: Visit the page `localhost:80` in your local browser.
+* Windows: Run the command `docker-machine ip`and visit `<ip>:80` in your local browser.
+
+If you do not see anything, try reading the next section and using the `1_docker_reset.sh` script to reset and run everything.
 
 ### Making Changes
 Try following the instructions listed on the static webpage. Once you have made these changes in the `1-static-webapp` folder, run `docker ps -a` and find the docker container with the status 'Up.'  Run the following commands to get a fresh start by stopping and removing the old docker container:
@@ -110,11 +117,12 @@ In this example, we will incorporate MapReduce. MapReduce is a programming parad
 ### Example
 Navigate to the `2-mapreduce` folder. This is a very simple example of realizing a map-reduce style workflow with Docker and Python. Note that this example is inspired by the tutorial in this [project](https://github.com/adewes/docker-map-reduce-example/blob/master/README.md).
 
-This example uses data from Github. To fetch the data, simply run:
+Examine the data in the `data` folder. These JSON files represent commit data for several days from Github. If you have a Mac/Linux computer and want fresh data, try running:
 
 	./fetch_data.sh
+	
+If you have a Windows machine, you will have to install `wget` for Windows, described [here](http://gnuwin32.sourceforge.net/packages/wget.htm). This step is not required unless you want fresh data.
 
-The data now lives in the `data` folder, representing commit data for several days from Github.
 
 #### Normal Analysis
 
