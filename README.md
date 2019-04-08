@@ -50,7 +50,7 @@ We will now learn more about Docker by running a [Busybox](https://en.wikipedia.
 
 By running this command, we retrieve a local version of Busybox to launch as a container on our system. We can now test this container by typing:
 
-	docker run busybox echo "I love Busybox!"
+	docker run busybox echo "I love Busybox"
 
 By passing a command, we instruct the container to  launch, execute our command from within the Busybox container, and then exit. This all happens in a split second!
 
@@ -117,11 +117,17 @@ In this example, we will incorporate MapReduce. MapReduce is a programming parad
 ### Example
 Navigate to the `2-mapreduce` folder. This is a very simple example of realizing a map-reduce style workflow with Docker and Python. Note that this example is inspired by the tutorial in this [project](https://github.com/adewes/docker-map-reduce-example/blob/master/README.md).
 
-Examine the data in the `data` folder. These JSON files represent commit data for several days from Github. If you have a Mac/Linux computer and want fresh data, try running:
+Examine the data in the `data` folder. These JSON files represent commit data for several days from Github. If you want fresh data, you must have `wget` installed. Try typing the following to determine if you have `wget`:
+	
+	which wget
+	
+If you do not have `wget` already installed, this step is optional. If you would like to install `wget` and pull the data, you can do so by visting the following links:
+* Mac/Linux: Installation [here](https://www.cyberciti.biz/faq/howto-install-wget-om-mac-os-x-mountain-lion-mavericks-snow-leopard/)
+* Windows: Installation [here](http://gnuwin32.sourceforge.net/packages/wget.htm)
+	
+Data can then be retrieved by running:
 
 	./fetch_data.sh
-	
-If you have a Windows machine, you will have to install `wget` for Windows, described [here](http://gnuwin32.sourceforge.net/packages/wget.htm). This step is not required unless you want fresh data.
 
 
 #### Normal Analysis
@@ -162,7 +168,7 @@ We can then run the master Docker container. Because we will be launching a seri
 
 This is simplified in the `2_docker_reset.sh` script in the util folder, which removes old docker containers and runs the `docker_parallelize.py` script. Note that it does not handle data fetching.
 
-The steps described prior will launch a number of Docker containers, each of which will analyze a portion of the data using the `docker_analyze.py` script. This lets us parallelize the work across several workers, which can be launched on separate machines. We still see the same output from this script as the normal data analysis because the results are aggregated at the end of the process. You should see the same output from this series of steps as the "normal" analysis.
+The steps described prior will launch a number of Docker containers, each of which will analyze a portion of the data using the `docker_analyze.py` script. This lets us parallelize the work across several workers, which can be launched on separate machines. We still see the same output from this script as the normal data analysis because the results are aggregated at the end of the process. You should see the same output from this series of steps as the "normal" analysis. *This will take a couple of minutes, so be patient.* 
 
 #
 #
