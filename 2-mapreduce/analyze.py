@@ -50,5 +50,3 @@ if __name__ == '__main__':
                      for word,frequency in 
                      sorted(reduced_results.items(),key=lambda x:-x[1])[:100]])
     print(final_result)
-    with open(os.path.join(analysis_directory, 'output.txt'),'w') as output_file:
-            output_file.write(final_result)
