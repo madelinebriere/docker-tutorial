@@ -44,7 +44,7 @@ If your output is as expected: Congrats! You officially have Docker installed. O
 #
 
 ## Busybox
-We will now learn more about Docker by running a [Busybox](https://en.wikipedia.org/wiki/BusyBox) container. Busybox provides several Unix utilities in a single source, giving us plenty of built-in functionality with which to work. To get started, fetch the busybox image from the Docker registry:
+We will now learn more about Docker by running a pre-configured container called [Busybox](https://en.wikipedia.org/wiki/BusyBox). Busybox provides several Unix utilities in a single source, giving us plenty of built-in functionality with which to work. To get started, fetch the busybox image from the Docker registry:
 
 	docker pull busybox
 
@@ -65,7 +65,7 @@ To build our static HTML image (basically the blueprint for a docker container),
 
 	docker build -t webapp-image:v1 .
 
-This command builds and configures a docker container. We can now launch this container by name on host port and container port 80 with the command:
+This command builds and configures a docker container. We can now launch this container by name by connecting host port 80 to container port 80 with the command:
 
 	docker run -d -p 80:80 webapp-image:v1
 
@@ -212,4 +212,5 @@ Explore how Docker can help with cloud computing in the [next tutorial, focusing
 * https://www.katacoda.com/courses/docker/create-nginx-static-web-server
 * https://github.com/prakhar1989/docker-curriculum/blob/master/static-site/html/index.html
 * https://github.com/adewes/docker-map-reduce-example/blob/master/README.md
-* https://gist.github.com/zbyte64/6800eae10ce082bb78f0b7a2cca5cbc2
+* https://gist.github.com/zbyte64/6
+0eae10ce082bb78f0b7a2cca5cbc2
