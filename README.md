@@ -23,7 +23,7 @@ This is a fancy way of saying that Docker provides a sandbox type of environment
 Let's first install Docker. Download an installer for [Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac), [Linux](https://www.linux.com/learn/intro-to-linux/2017/11/how-install-and-use-docker-linux), or [Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows). You may have to create a Docker account to do so. Notes: 
 
 * If you have a Linux computer, the installation of Docker is a bit more involved. If you are up for it, give it a try. Otherwise, try working with someone who has Docker installed.
-* If you have a Windows computer, you must have Windows 10 Pro or Enterprise installed to download Docker this way.
+* If you have a Windows computer, you must have Windows 10 Pro or Enterprise installed to download the Docker *Desktop* application. If you have an earlier version of Windows, try installing Docker *Toolbox* instead using the instructions described [here](https://docs.docker.com/toolbox/toolbox_install_windows/). The steps after installation should be the same, but installation may be a bit more involved.
 
 Once the installation is complete, make sure that Docker is installed on your command line by running the following command:
 
@@ -32,7 +32,7 @@ Once the installation is complete, make sure that Docker is installed on your co
 
 If your output is as expected: Congrats! You officially have Docker installed. Otherwise, try one of the following solutions:
 * Uninstalling and reinstalling Docker, potentially using commandline tools instead ([Stack Overflow](https://stackoverflow.com/questions/32744780/install-docker-toolbox-on-a-mac-via-command-line) can be very helpful with this). This can be done using tools like Homebrew (a package manager for Linux and Mac). 
-* If the installation indicates that your Mac or Windows version is not high enough, try the alternate solution explained [here](https://docs.docker.com/toolbox/toolbox_install_windows/).
+* If the installation indicates that your Mac or Windows version is not high enough, try the alternate solution explained [here](https://docs.docker.com/toolbox/toolbox_install_windows/) for Windows and [here](https://docs.docker.com/docker-for-mac/) for Mac.
 * If it seems to be a permission issue, run Docker as an administrator (e.g., on Mac, use `sudo`).
 
 #
