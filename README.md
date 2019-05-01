@@ -190,6 +190,20 @@ Larger companies like Google and Facebook have internal equivalents.
 
 Explore how Docker can help with cloud computing in the [next tutorial, focusing on AWS.](https://github.com/JamesDaubert/aws-server-tutorial)
 
+## Post-Lab Commentary
+This lab was conducted in 2019 with a Duke CS308 class. Feedback was as follows:
+* The data retrieved from the given address does not exist after 2011
+* Students did not know to clone and navigate into the project
+* Students did not know that Docker must be launched before they can use it
+* It wasn't that exciting to see the same amount of output from the Python script as the Docker Python script (even though this demonstrates the core functionality of Docker).
+* Some students were still unable to complete the installation of Docker (despite the explanation given). One student got the following error with every new installation (using both Docker Desktop and Toolbox):
+```Error response from daemon: Get https://registry-1.docker.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)```
+
+In the future, the following modifications should be made to the tutorial:
+* New data should be located if students want to use data past 2011. Otherwise, the `wget` command can be completely skipped in future iterations of the tutorial.
+* Students should be given more explicit instruction about installing and navigating through the folders.
+* The difference between the two script outputs (or rather, the similarities) should be made more evident to the students. This may require them taking more part in the creation of the two steps in order to see how much simpler the Docker option is.
+* More iterations of this tutorial with more students should make the common problems more easily diagnosed.
 
 #
 ## Useful Docker commands:
